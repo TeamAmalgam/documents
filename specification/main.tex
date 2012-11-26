@@ -7,6 +7,11 @@
 \usepackage[T1]{fontenc}
 \usepackage{ae,aecompl}
 
+% For definitions
+\usepackage{amsthm}
+\theoremstyle{definition}
+\newtheorem{mydef}{Definition}
+
 \usepackage[%
   style=ieee,
   sorting=none,
@@ -26,20 +31,55 @@ SE390 Requirements Specification for Team Amalgam
 \newpage
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Introduction} % Introduction to the document
+\section{Introduction}
 \subsection{Purpose}
 % Purpose of the document
 % Who is intended audience?
 % How is it to be used?
 % .25-.5 pages
 
+This document is the requirements specification for Moolloy version
+0.3, a computer-based system that will be developed by Team Amalgam.
+This system will be developed over the course of the fourth-year design
+project, which consists of the courses SE390, SE490, and SE491.
+
+Furthermore, as the system is built on top of Moolloy, the scope of
+this document includes the requirements specification for Moolloy.
+The intended audience for this document will be researchers interested
+in the \textit{guided improvement algorithm} for multi-objective
+optimization, or any other relational logic optimization problems.
+
+This document allows us, and any other researchers, to develop
+benchmarks and tests for Moolloy. Furthermore, interested researchers
+may also use this document to write extensions and modify the software.
+
 \subsection{Scope}
 % Name of the software product
 % Overview of the product - what it will/ will not do
-% Summary of the application of the the software, including benefits
+% Summary of the application of the software, including benefits
 % and goals
 % The boundaries of the product
 % .25-.5 pages
+
+The software product described in this document will be referred to as
+\textit{Moolloy v0.3}, or \textit{Moolloy} for short. Henceforth, any
+references to the existing Moolloy versions will be referred to with
+their version numbers, or as the \textit{original Moolloy}.
+
+Moolloy is an implementation of the \textit{guided improvement
+algorithm}, which produces Pareto-optimal solutions to general
+multi-objective optimization problems. Although Moolloy is built on top
+of a SAT solver, it is not a SAT solver.
+
+Multi-objective optimization is an interest to many fields of science
+and engineering. In particular, we are interested in problems in
+aerospace, civil engineering, and software engineering. Many of these
+problems cannot be solved by Moolloy v0.2, as the input space is too
+large. Our work is to optimize Moolloy so it can handle problems of
+this scale.
+
+Our focus is on optimizing Moolloy and how it calls the SAT solver. We
+are not concerned with optimizing the SAT solver itself.
 
 \subsection{Definitions, acronyms, abbreviations}
 % Usually for domain-level definitions
@@ -48,16 +88,66 @@ SE390 Requirements Specification for Team Amalgam
 % Explain any notational conventions for any deviations from the
 % standard UML notation
 
+\begin{mydef}
+A solution is said to be \textit{Pareto-optimal} if and only if it is
+not \textit{dominated} by any other solution. A solution $a$ dominates
+a solution $b$ if all metrics of $a$ are greater than or equal to their
+corresponding metrics of $b$, and there exists some metric of $a$ that
+is strictly greater than its corresponding metric of $b$.
+\end{mydef}
+
+\begin{mydef}
+The set of all Pareto-optimal solutions is called the
+\textit{Pareto-front}.
+\end{mydef}
+
+\begin{mydef}
+A \textit{multi-objective optimization (MOO) problem} is a problem with
+multiple constraints, as well as multiple goals to optimize over.
+\end{mydef}
+
+\begin{mydef}
+An \textit{exact} solution to a multi-objective optimization problem is
+the Pareto-front.
+\end{mydef}
+
+\begin{mydef}
+\textit{Discrete} in this document means that there is a countable
+number of configurations for every problem. This is in contrast to the
+continuous case. A synonym for discrete is \textit{combinatorial}, but
+we will only use the former term.  \end{mydef}
+
+\begin{mydef}
+By \textit{general-purpose}, we mean that Moolloy can solve any
+multi-objective optimization problem, as opposed to a specific one.
+\end{mydef}
+
+\begin{mydef}
+\textit{SAT}, or \textit{boolean satisfiability}, is a problem that
+asks whether a given Boolean formula can be assigned values such that
+its evaluation is true. In other words, it asks if a given Boolean
+formula can be satisfied.
+\end{mydef}
+
 \subsection{References}
 % Sources of information such as
 %   Pre-existing project documentation
 %   Documentation of stakeholder interviews
 %   External info sources
 
+Our work is an extension of the original Moolloy, which was described
+by Rayside, Estler, and Jackson~\cite{ref:moolloy}.
+
 \subsection{Overview}
 % Brief description of the structure of the rest of the SRS
 % Chosen organization for section 3
 % Any deviations from the standard SRS format
+
+The rest of this document describes the environment, interface, and
+functionality of Moolloy. We also discuss assumptions about the user,
+as well as other constraints and external dependencies. Finally, we
+describe the functional and nonfunctional requirements for the
+computer-based system.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Overall Description}
@@ -106,5 +196,7 @@ SE390 Requirements Specification for Team Amalgam
 
 % Appendices
 %Index
+
+\printbibliography
 
 \end{document}
