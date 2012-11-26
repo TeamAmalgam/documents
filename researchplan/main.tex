@@ -3,6 +3,9 @@
 \title{Team Amalgam \\ SE390 Research Plan}
 \author{Joseph Hong, Chris Kleynhans, Ming-Ho Yee, Atulan Zaman}
 
+\usepackage[style=ieee,sorting=none,dateabbrev=false,backend=biber]{biblatex}
+\addbibresource{main.bib}
+
 \begin{document}
 \maketitle
 
@@ -29,7 +32,42 @@ Therefore this work will focus on increasing the optimality as well as the scala
 
 \section{Related Work}
 
-\section{Research Value} 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Research Value}
+There are many fields in which multi-objective optimization problems
+appear. By improving the performance and scalability of the algorithm
+we will enable its usage for problems with larger sample spaces. Three
+fields that we have identified that may benefit from an optimized
+algorithm are aerospace, civil engineering, and software engineering.
+
+\subsection{Aerospace}
+Every ten years NASA performs its decadal survey to determine which
+missions it will undertake for the next decade \cite{ref:decadal}.
+Multi-objective optimization can be used to determine a launch schedule
+that maximizes the scientific value the missions provide to different
+scientific communities while minimizing cost. Such a problem also
+requires constraints to be satisfied. For example, one mission may be
+dependent on another or a mission may need specific timing.
+
+\subsection{Civil Engineering}
+Professor Bryan Tolson has identified a number of problems he is
+researching that are multi-objective optimization problems. Currently,
+the problems are solved using heuristic methods or genetic algorithms.
+As discussed earlier, these methods do not guarantee that their
+solution is the best result. One of the problems he is interested in is
+determining the optimal materials to use for each of a landfill's
+lining layers, to minimize both seepage and cost.
+
+
+\subsection{Software Engineering}
+One applicable Software Engineering problem is that of Software product
+lines. In such a problem we wish to determine which modules we wish to
+include in the software for an embedded device. Each module can perform
+different functions and these functions may conflict with other
+modules. Additionally each module will have a different cost in terms
+of code size and different performance metrics. We wish to determine
+what would be an optimal set of modules for a device that requires
+certain functions.
 
 \section{Goals}
 The goal of this project is to reduce the computation time for Moolloy of large problem spaces with many optimization goals and to increase the scalability of Moolloy so that by the end of this project Moolloy can successfully computes solutions to optimality problems within a comfortable time bound, that are out of reach in the current version. Part of meeting this  goal would mean creating a regression suite to make sure the results we are getting from optimization are still reliable and that might a comparison metric for the new results with the original results during our regular build system.
@@ -47,7 +85,7 @@ The methodologies that we are considering as a logical starting point are the fo
   \item Workflow Feedback
 \end{itemize}
 
-\section{Risks & Technical Feasibility}
+\section{Risks \& Technical Feasibility}
 
 
 \section{Costs}
@@ -55,4 +93,7 @@ The methodologies that we are considering as a logical starting point are the fo
 \section{Legal/Social/Ethical Issues}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\printbibliography[heading=bibintoc]
+
 \end{document}
