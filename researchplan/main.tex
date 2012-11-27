@@ -5,8 +5,11 @@
         \{yshong,cpkleynh,m5yee,a3zaman\}@uwaterloo.ca}
 
 \usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
 \usepackage{ae,aecompl}
+
 \usepackage{caption}
+
 \usepackage[%
   style=ieee,
   sorting=none,
@@ -47,7 +50,7 @@ problems rise exponentially with the number of dimensions required for
 optimizing.
 
 One simple example of a multi-objective optimization problem is the
-satellite scheduling problem. In this problem~\cite{ref:decadal}, NASA
+satellite scheduling problem. In this problem~\cite{ref:nasa11}, NASA
 needs to figure out the best possible scheduling routine for their
 satellites, each of which have different purpose and are of interest to
 different scientific communities. In this problem, the constraints for
@@ -65,7 +68,7 @@ compromising at least one other optimization goal.
 addresses discrete input data as constraints and optimization goals and
 does accept or produce continuous optimality conditions.
 
-Moolloy~\cite{ref:moolloy} is a tool created in the MIT CSAIL labs that
+Moolloy~\cite{ref:Rayside09} is a tool created in the MIT CSAIL labs that
 implements the algorithm described above, and it also has a GUI that
 lets the user specify the constrains and objective condition as well
 graphically view the Pareto-optimal solutions computed by the MOO
@@ -85,7 +88,7 @@ solutions.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Related Work}
 
-In 2009, Rayside, Estler, and Jackson~\cite{ref:moolloy} proposed the
+In 2009, Rayside, Estler, and Jackson~\cite{ref:Rayside09} proposed the
 \textit{guided improvement algorithm}. In their paper, they also
 conducted a literature survey on related work. Rayside et al.\ found
 that most multi-objective problems were concerned with continuous
@@ -101,7 +104,7 @@ general-purpose solver. Furthermore, it is not an extension of a
 single-objective approach. Rayside et al.\ identified a similar
 approach they call the \textit{opportunistic improvement algorithm},
 which was independently discovered by Gavanelli~\cite{ref:Gavanelli02}
-and Lukasiewycz et al.~\cite{ref:lukas07}. Notably, the \textit{guided
+and Lukasiewycz et al.~\cite{ref:Lukas07}. Notably, the \textit{guided
 improvement algorithm} produces intermediate Pareto-optimal results.
 
 Only three publications have cited the \textit{guided improvement
@@ -125,7 +128,7 @@ algorithm are aerospace, civil engineering, and software engineering.
 
 \subsection{Aerospace}
 Every ten years NASA performs its decadal survey to determine which
-missions it will undertake for the next decade~\cite{ref:decadal}.
+missions it will undertake for the next decade~\cite{ref:nasa11}.
 Multi-objective optimization can be used to determine a launch schedule
 that maximizes the scientific value the missions provide to different
 scientific communities while minimizing cost. Such a problem also
