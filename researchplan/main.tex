@@ -48,9 +48,9 @@ found that satisfies the various optimization goals.
 \textit{Exact} in the context of our problem indicates that all
 solutions computed by the algorithm are Pareto-optimal. Informally,
 this means none of the solutions can be improved without compromising
-at least one other optimization goal. Heuristic approaches and genetic
-algorithms for multi-objective optimization do not guarantee that all
-their solutions are Pareto-optimal.
+at least one other optimization goal. Heuristic approaches for
+multi-objective optimization do not guarantee that all their solutions
+are Pareto-optimal.
 
 \textit{Discrete} indicates that our optimization algorithm only
 addresses discrete, or combinatorial, input data. The algorithm does
@@ -70,9 +70,10 @@ multi-objective optimization problems. It also has a GUI that lets the
 user specify the constraints and objective conditions, as well
 graphically view the Pareto-optimal solutions computed by the
 algorithm. The underlying algorithm, called the \textit{guided
-improvement algorithm}, is capable of solving small problems; however,
+improvement algorithm}, is capable of solving small problems. However,
 its scalability is greatly limited by the time it takes to compute
-solutions for large problems.
+solutions for large problems, since the algorithm must make multiple
+calls to a SAT solver.
 
 Therefore, our work will focus on increasing the performance of
 Moolloy, while ensuring the algorithm continues to perform correctly.
@@ -133,11 +134,11 @@ satellite may need to match a specific timeline.
 Dr.\ Bryan Tolson, a civil engineering professor from the University of
 Waterloo, has identified a number of multi-objective optimization
 problems in his research. Currently, the problems are solved using
-heuristic methods or genetic algorithms. As discussed earlier, these
-methods do not guarantee that their solutions are Pareto-optimal. One
-of Dr.\ Tolson's problems is to determine the optimal type, quantity,
-and arrangement of materials to line a landfill in order to minimize
-seepage, while keeping cost minimal.
+heuristic methods, in other words, genetic algorithms. As discussed
+earlier, these methods do not guarantee that their solutions are
+Pareto-optimal. One of Dr.\ Tolson's problems is to determine the
+optimal type, quantity, and arrangement of materials to line a landfill
+in order to minimize seepage, while keeping cost minimal.
 
 \subsection{Software Engineering}
 We will be collaborating with Rafael Olaechea, a graduate student at
@@ -148,28 +149,31 @@ embedded device. Each module can perform different functions, which may
 conflict with other modules. Additionally, each module will have a
 different cost in terms of code size and performance metrics.
 Therefore, the problem is to determine an optimal set of modules for a
-device that requires certain functions.
+device, while satisfying the functionality constraints.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Goals}
-The goal of this project is to reduce the computation time for Moolloy
-of large problem spaces with many optimization goals and to increase
-the scalability of Moolloy so that by the end of this project Moolloy
-can successfully computes solutions to optimality problems within a
-comfortable time bound, that are out of reach in the current version.
-Part of meeting this goal would mean creating a regression suite to
-make sure the results we are getting from optimization are still
-reliable and that might a comparison metric for the new results with
-the original results during our regular build system.
+The goal of this project is to optimize Moolloy by reducing the number
+of SAT solver calls. This will increase the scalability of Moolloy so
+it can successfully compute solutions for large multi-objective
+optimization problems that are not possible in the current version.
+To measure success, we will create a benchmark suite to confirm that
+our versions actually make Moolloy faster. Furthermore, we will develop
+a regression suite to ensure Moolloy continues to compute correct
+solutions.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Methodologies}
-The methodologies that we are considering as a logical starting point
-are the following, which are results of previous works by researchers
-in this field and also by Derek Rayside and his collaborators. As we
-proceed with the project it possible we might find some of these
-optimization ideas not very useful and we might come up with other
-techniques that might be more relevant.
+Before we begin the optimization work, we will identify a series of
+problems that can be used as test data. These problems will range from
+small benchmarks to test correctness, as well as large, real-world
+problems to test for optimization. We will also begin converting these
+problems into models that Moolloy can take as input. Concurrently, we
+will also be refactoring the Moolloy code base, to make it more
+maintainable.
+
+Once these tasks have been completed, we can begin exploring different
+optimization strategies, which are listed below:
 
 \begin{itemize}
   \item Parallel Decomposition
@@ -182,76 +186,78 @@ techniques that might be more relevant.
   \item Incremental SAT Solving
 \end{itemize}
 
+These ideas are the result of previous work done by Dr.\ Rayside and
+his collaborators. As we proceed with the project, we may eliminate
+some of these optimization ideas, or add our own.
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Risks \& Technical Feasibility}
-One of the risks of this project is that we might not be able find
-ideal use cases to test our optimization ideas in which they apply.
-Because different optimality problems have various possible routes for
-optimization it could both be difficult to find the perfect
-optimization scheme, that addresses most models as well as finding
-models that are ideal for our algorithms. This is why we are working
-with multiple collaborators to increase our problem space. That
-includes the graduate students in WATFORM who work on solving relevant
-problem sets and also Prof.\ Bryan Tolson from Department of Civil
-Engineering who has multiple problems that might be more helpful to
-solve using MOO.\@
+One risk in this project is that we may not be able to find good test
+cases to evaluate our optimization techniques. Each problem is
+different, and thus there are many possible routes for optimization.
+Furthermore, significant domain knowledge may be required to properly
+model the problems. This is why we are working with multiple
+collaborators in different fields, to obtain both test problems and
+relevant domain knowledge.
 
-Another unlikely risk for this project is that none of our algorithms
-provide satisfactory results in terms of performance benchmark, in
-which case it would still have research value however, little research
-impact since there would not be a lot of benefit to users from this.
-
-Time is always a risk in research project such as this, because we
-might not be able to explore all our optimization ideas. Therefore we
-are paying close attention to which algorithms we want to explore first
-on the basis of how effective they might seem from initial analysis.
+An unlikely risk for this project is that none of our techniques
+provide satisfactory results in terms of performance. There is still
+research value, although very little research impact, as there is very
+little benefit to users.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Costs}
-\begin{verbatim}
-//We estimate that it will cost around \$AB,CDE to pay the developers.
-//This estimate is based on the average co-op student hourly earnings
-//information~\cite{ref:ceca} provided by the University of Waterloo,
-//and under the assumption that the entire project will require about 
-//ABCD man-hours to complete.
-\end{verbatim}
+Based on informal calculations, we estimate that it would cost \$50,000
+to pay the four developers on this project. This estimate is based on
+the average co-op student hourly earnings information~\cite{ref:ceca}
+provided by the University of Waterloo. We assume an approximate total
+of 500--600 developer-hours, spread over three study terms and two
+co-op terms, to complete the project.
 
 Aside from the cost associated with the labour, we estimate our expense
-to be around \$A,BCD.EF as a result of purchasing various hardware
-components and/or software licenses. Table~\ref{tbl:costbreakdown} shows the
-total cost breakdown for our project.
+to be around \$350 as a result of purchasing various tools and
+services, as well as hardware infrastructure for our tests.
+Table~\ref{tbl:costbreakdown} shows the total cost breakdown for our
+project.
 
 \begin{table}
   \captionsetup{margin=30pt}
-  \caption{Total Cost Breakdown}
-  \label{tbl:costbreakdown}
+  \caption{Total cost breakdown}\label{tbl:costbreakdown}
   \centering
-  \begin{tabular}{|r|l|}
+  \begin{tabular}{lr}
     \hline
-    \multicolumn{1}{|c|}{\textbf{Item}} &
-    \multicolumn{1}{|c|}{\textbf{Cost}} \\
+    \multicolumn{1}{c}{\textbf{Item}} &
+    \multicolumn{1}{c}{\textbf{Cost}} \\
     \hline
-      This is item \#1 & \$ABCDEF.01 \\
-    \hline
+      Developer time & \$50,000 \\
+      Continuous integration and build system & \$150 \\
+      Asynchronous communication platform & \$150 \\
+      Cloud computing infrastructure & \$50 \\
   \end{tabular}
 \end{table}
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Legal, Social, and Ethical Issues}
+As we will be using many external libraries, we will need to consider
+which software licenses they are licensed under. Alloy and Kodkod are
+both licensed under the MIT License, a permissive free software
+license. Thus, no restrictions or limitations are applied to our work.
 
-\section{Legal/Social/Ethical Issues}
-We may face various legal issues with incorrect or suboptimal solutions
-generated by our solver. The use of these solutions without any
-verification done by our customer may result in undesired
-consequences, which include, but not limited to, bodily harm, violation
-of regulations, and monetary damages. As such, a disclaimer must be
-presented to our customers, advising them that verifications be done
-on all solutions and that we hold no liability in case of such
-\textbf{\lbrack insert your favourite word here\rbrack}.
+We may also face various legal issues with incorrect or suboptimal
+solutions generated by our solver. The use of such solutions without
+any verification may result in undesired consequences, which include,
+but are not limited to, bodily harm, violation of regulations, and
+monetary damages. As such, a disclaimer must be presented to our
+users, advising them that verifications be done on all solutions,
+and that we hold no liability in case of such circumstances.
 
-Moreover, by increasing the optimality of our solver, we may be able to solve MOO
-problems that were previously considered infeasible to be solved by
-machines. This will likely cause several ethical and social issues,
-the most predominant issue being the elimination of job positions that
-were previously tasked to solve those problems manually.
+Moreover, by increasing the optimality of our solver, we may be able to
+solve multi-objective optimization problems that were previously
+unsolvable by computers in reasonable time. This will likely cause
+several ethical and social issues, the most predominant issue being the
+elimination of job positions that were previously tasked to solve those
+problems manually.
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \printbibliography[heading=bibintoc]
 
