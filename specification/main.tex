@@ -99,7 +99,7 @@ is strictly greater than its corresponding metric of $b$.
 
 \begin{mydef}
 The set of all Pareto-optimal solutions is called the
-\textit{Pareto-front}.
+\textit{Pareto front}.
 \end{mydef}
 
 \begin{mydef}
@@ -109,7 +109,7 @@ multiple constraints, as well as multiple goals to optimize over.
 
 \begin{mydef}
 An \textit{exact} solution to a multi-objective optimization problem is
-the Pareto-front.
+the Pareto front.
 \end{mydef}
 
 \begin{mydef}
@@ -157,7 +157,7 @@ computer-based system.
 %   Do not state specific requirements here instead provide a
 %   background for those requirements.
 
-\subsection{Product Perspective}
+%\subsection{Product Perspective}
 % Describe the environment of the system
 % Include a context diagram
 % A detailed description is not necessary since interface
@@ -165,14 +165,18 @@ computer-based system.
 % This section includes requirements of the user interface, such as
 % testable usability requirements
 
-\subsection{Product Functions}
+Moolloy, as an extension of Alloy, is written in Java. It is backed by
+Kodkod, which in turn makes calls to an external SAT solver. Kodkod and
+the SAT solver are packaged with Moolloy.
+
+%\subsection{Product Functions}
 % Overview of system's main features
 % Need give only a textual list of UC names
 
-Moolloy takes as its input a multi-objective optimization problem and
-returns the Pareto-front.
+As input, Moolloy takes a multi-objective optimization problem modelled
+in Alloy, and returns the Pareto front as an Alloy model.
 
-\subsection{User Characteristics}
+%\subsection{User Characteristics}
 % Document any assumptions you make about the user and any assumptions
 % you make about the background or how much training the user will need
 % to use the system
@@ -180,17 +184,15 @@ returns the Pareto-front.
 
 We assume that all users are already familiar with multi-objective
 optimization, including such terms as \textit{Pareto-optimal} and
-\textit{Pareto-front}. Furthermore, we assume users are familiar with
-how SAT solvers are used to find these solutions.
+\textit{Pareto front}. Furthermore, we assume users are familiar with
+how SAT solvers are used to find these solutions. The user should also
+be familiar with expressing the problem in Moolloy's domain specific
+language, as well as interpreting the results.
 
-The user should also be familiar with expressing the problem in
-Moolloy's domain specific language, as well as interpreting the
-results.
-
-\subsection{General Constraints}
+%\subsection{General Constraints}
 % Other constraints
 
-\subsection{Assumptions and Dependencies}
+%\subsection{Assumptions and Dependencies}
 % Assumptions about input/environmental behaviour
 % e.g. hardware never fails, ATM casing is impenetrable
 
