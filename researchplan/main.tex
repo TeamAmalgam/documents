@@ -31,129 +31,124 @@ SE390 Research Plan for Team Amalgam
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Problem Definition}
 Multi-objective optimization is a widely researched area of computer
-science that focuses on finding solution to problem definitions with
+science that focuses on finding solutions to problem definitions with
 respect to given objective realization constraints. Computing such
-problems is extremely resource intensive and the computation time grows
-exponentially with the number of optimization variables.
+solutions is extremely resource intensive, and the computation time
+grows exponentially with the number of optimization variables.
 
 The nature of our work in scientific terms is called \textit{exact,
 discrete multi-objective optimization}. Multi-objective optimization
-(MOO) is the process of computing the most optimized solution given a
-goal and a set of constraints. The reason it is called
-\textit{multi-objective} is because multiple constraints are being
-computed for optimization at the same time as using the constraints,
-which means there could be more than one optimal solution that could
-satisfy the constraints that satisfy various optimization goals. Since
-optimization for different goals requires verification of many
-permutations of constraint combinations, the processing time for such
-problems rise exponentially with the number of dimensions required for
-optimizing.
+(MOO) is the process of computing the most optimal solutions given a
+goal and a set of constraints.
+
+\textit{Multi-objective} means that there are multiple metrics that
+must be optimized over. Thus, more than one optimal solution may be
+found that satisfies the various optimization goals.
+
+\textit{Exact} in the context of our problem indicates that all
+solutions computed by the algorithm are Pareto-optimal. Informally,
+this means none of the solutions can be improved without compromising
+at least one other optimization goal. Heuristic approaches and genetic
+algorithms for multi-objective optimization do not guarantee that all
+their solutions are Pareto-optimal.
+
+\textit{Discrete} indicates that our optimization algorithm only
+addresses discrete, or combinatorial, input data. The algorithm does
+not accept continuous optimality conditions.
 
 One simple example of a multi-objective optimization problem is the
 satellite scheduling problem. In this problem~\cite{ref:nasa11}, NASA
-needs to figure out the best possible scheduling routine for their
-satellites, each of which have different purpose and are of interest to
-different scientific communities. In this problem, the constraints for
-NASA are such things as resource limitations and launch ordering
-constraints and the objectives to solve for the values it relates to
-for the different science cohorts.
+must determine the best possible satellite launch schedule that
+maximizes scientific value. Each satellite has a different cost,
+purpose, and value to a different scientific community. In this
+problem, the constraints for NASA are such things as resource
+limitations and launch ordering constraints.
 
-\textit{Exact} in the definition of the problem indicates that all
-solutions computed by this algorithm is Pareto-optimal. Which means
-that each of the computed Pareto-optimal solutions satisfy the
-condition that no optimization goals can be made better off without
-compromising at least one other optimization goal.
+Moolloy~\cite{ref:Rayside09} is a tool introduced by the MIT Computer
+Science and Artificial Intelligence Laboratories that solves
+multi-objective optimization problems. It also has a GUI that lets the
+user specify the constraints and objective conditions, as well
+graphically view the Pareto-optimal solutions computed by the
+algorithm. The underlying algorithm, called the \textit{guided
+improvement algorithm}, is capable of solving small problems; however,
+its scalability is greatly limited by the time it takes to compute
+solutions for large problems.
 
-\textit{Discrete} indicates that our optimization algorithm only
-addresses discrete input data as constraints and optimization goals and
-does accept or produce continuous optimality conditions.
-
-Moolloy~\cite{ref:Rayside09} is a tool created in the MIT CSAIL labs that
-implements the algorithm described above, and it also has a GUI that
-lets the user specify the constrains and objective condition as well
-graphically view the Pareto-optimal solutions computed by the MOO
-algorithm. The problem with multi-objective optimization is that as the
-number of dimensions of the optimization goal increases, the
-Pareto-front of the problem also increases exponentially which causes a
-leap in the processing time. While using a unoptimized version of the
-\textit{guided improvement algorithm} does give solutions; however, its
-scalability is greatly handicapped by the how time consuming the
-computation becomes with a large problem space.
-
-Therefore this work will focus on increasing the optimality as well as
-the scalability of Moolloy by addressing various relational logic
-optimization techniques without undermining the integrity of the MOO
-solutions.
+Therefore, our work will focus on increasing the performance of
+Moolloy, while ensuring the algorithm continues to perform correctly.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Related Work}
 
-In 2009, Rayside, Estler, and Jackson~\cite{ref:Rayside09} proposed the
-\textit{guided improvement algorithm}. In their paper, they also
-conducted a literature survey on related work. Rayside et al.\ found
-that most multi-objective problems were concerned with continuous
-variables, as opposed to discrete, or combinatorial, variables.
+The \textit{guided improvement algorithm} was described by Rayside,
+Estler, and Jackson~\cite{ref:Rayside09} in 2009. In their paper, they
+also conducted a literature survey on related work. Rayside et al.\
+found that most multi-objective problems were concerned with continuous
+variables, as opposed to discrete variables.
 
-Furthermore, most of the research on multi-objective optimization was
-focused on heuristic approaches, specific instead of general solvers,
-extensions of single-objective solvers, or problems with only two or
-three variables.
+Furthermore, most of the research on multi-objective optimization they
+found was focused on heuristic approaches, specific instead of general
+solvers, extensions of single-objective solvers, or problems with only
+two or three variables.
 
-The \textit{guided improvement algorithm} is an exact, discrete,
-general-purpose solver. Furthermore, it is not an extension of a
-single-objective approach. Rayside et al.\ identified a similar
-approach they call the \textit{opportunistic improvement algorithm},
-which was independently discovered by Gavanelli~\cite{ref:Gavanelli02}
-and Lukasiewycz et al.~\cite{ref:Lukas07}. Notably, the \textit{guided
-improvement algorithm} produces intermediate Pareto-optimal results.
+The guided improvement algorithm is an exact, discrete, general-purpose
+solver. Furthermore, it is not an extension of a single-objective
+approach. Rayside et al.\ identified a similar approach they call the
+\textit{opportunistic improvement algorithm}, which was independently
+discovered by Gavanelli~\cite{ref:Gavanelli02} and Lukasiewycz, Gla\ss,
+Haubelt, and Teich~\cite{ref:Lukas07}. Notably, the guided improvement
+algorithm produces intermediate Pareto-optimal results during its
+computation.
 
-Only three publications have cited the \textit{guided improvement
-algorithm} paper since it was published. One of them is about
-developing a user interface, while the other two concern applications
-of the algorithm. Thus, none of them are related to our work, which is
+Only three publications have cited the guided improvement algorithm
+paper since it was published. One of them describes a spreadsheet-like
+user interface, while the other two concern applications of the
+algorithm. Thus, none of them are related to our work, which is
 strictly to optimize the algorithm.
 
 %\mbox{} to prevent line-breaking K-PPM
 A more recent paper by Dhaenens, Lemesre, and Talbi~\cite{ref:kppm}
-proposes \textit{\mbox{K-PPM}}, which can be parallelized. However, the
-algorithm does not produce intermediate Pareto-optimal results.
+proposes \textit{\mbox{K-PPM}}, an algorithm which can be parallelized.
+However, the algorithm does not produce intermediate Pareto-optimal
+results.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Research Value}
-There are many fields in which multi-objective optimization problems
-appear. By improving the performance and scalability of the algorithm
-we will enable its usage for problems with larger sample spaces. Three
-fields that we have identified that may benefit from an optimized
-algorithm are aerospace, civil engineering, and software engineering.
+Multi-objective optimization problems appear in may different fields.
+By improving the performance and scalability of the algorithm, we will
+enable its usage for problems with larger input spaces. We have
+identified potential case studies from three different fields:
+aerospace, civil engineering, and software engineering.
 
 \subsection{Aerospace}
-Every ten years NASA performs its decadal survey to determine which
-missions it will undertake for the next decade~\cite{ref:nasa11}.
-Multi-objective optimization can be used to determine a launch schedule
-that maximizes the scientific value the missions provide to different
-scientific communities while minimizing cost. Such a problem also
-requires constraints to be satisfied. For example, one mission may be
-dependent on another or a mission may need specific timing.
+Every ten years NASA performs its decadal survey to determine the
+satellite launch schedule for the next decade~\cite{ref:nasa11}.
+Multi-objective optimization can be used to determine a schedule that
+maximizes scientific value to different scientific communities while
+minimizing cost. Furthermore, many different constraints must be
+satisfied. For example, one satellite may depend on another, or a
+satellite may need to match a specific timeline.
 
 \subsection{Civil Engineering}
-Professor Bryan Tolson has identified a number of problems he is
-researching that are multi-objective optimization problems. Currently,
-the problems are solved using heuristic methods or genetic algorithms.
-As discussed earlier, these methods do not guarantee that their
-solution is the best result. One of the problems he is interested in is
-determining the optimal materials to use for each of a landfill's
-lining layers, to minimize both seepage and cost.
+Dr.\ Bryan Tolson, a civil engineering professor from the University of
+Waterloo, has identified a number of multi-objective optimization
+problems in his research. Currently, the problems are solved using
+heuristic methods or genetic algorithms. As discussed earlier, these
+methods do not guarantee that their solutions are Pareto-optimal. One
+of Dr.\ Tolson's problems is to determine the optimal type, quantity,
+and arrangement of materials to line a landfill in order to minimize
+seepage, while keeping cost minimal.
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Software Engineering}
-One applicable Software Engineering problem is that of Software product
-lines. In such a problem we wish to determine which modules we wish to
-include in the software for an embedded device. Each module can perform
-different functions and these functions may conflict with other
-modules. Additionally each module will have a different cost in terms
-of code size and different performance metrics. We wish to determine
-what would be an optimal set of modules for a device that requires
-certain functions.
+We will be collaborating with Rafael Olaechea, a graduate student at
+the University of Waterloo who is interested in the \textit{software
+product lines} problem~\cite{ref:Olaechea12}. This problem involves
+determining which modules should be included in the software for an
+embedded device. Each module can perform different functions, which may
+conflict with other modules. Additionally, each module will have a
+different cost in terms of code size and performance metrics.
+Therefore, the problem is to determine an optimal set of modules for a
+device that requires certain functions.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Goals}
