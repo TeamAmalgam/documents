@@ -269,7 +269,7 @@ Moolloy has the following command-line arguments:
   %Specifies that only one solution is computed. Defaults to False.
 
   \item \verb|--LogRunningTimesArg=filename|\\
-  Enables logging of running files. Output will be written to the
+  Enables logging of running times to a file. Output will be written to the
   file \texttt{filename}. Defaults to False.
 
   \item \verb|--NoAdaptableImprovement|\\
@@ -312,6 +312,31 @@ TODO: What is the grammar/format of this XML file?
 %     Functional specifications
 %     State machine model
 %     Constraints
+
+Moolloy takes in a multi-objective optimization problem as an Alloy
+model, a format described in Section~\ref{sec:in_model}. It applies the
+guided improvement algorithm to compute the Pareto front of the
+specified problem. These solutions are converted to an Alloy instance,
+expressed as XML, as described in Section~\ref{sec:out_model}.
+
+If the \texttt{SingleSolutionPerParetoPoint} flag is specified, then
+Molloy will compute only one solution for each Pareto point. If this
+flag is not specified, Moolloy will use its default settings, which
+will return all solutions that result in that Pareto point.
+
+If the \texttt{LogRunningTimesArg} flag is specified, then Molloy will
+log running times to the specified file. By default, this flag is not
+set.
+
+If the \texttt{NoAdaptableImprovement} flag is specified, then Moolloy
+will not use the adaptable improvement optimization, which was exists
+in the original version of Moolloy. This optimization uses exponential
+steps when searching for better solutions. By default, this flag is not
+set.
+
+If the \texttt{LogPrintHeaders} flag is specified, then Moolloy will
+include column headers in the log files. By default, this flag is not
+set.
 
 \subsection{Performance Requirements}\label{sec:perf_req}
 % Stated in concrete terms
