@@ -292,11 +292,33 @@ cannot concretely specify the arguments at this time.
 \subsubsection{Input model}\label{sec:in_model}
 
 The input model, specified as an Alloy file, is passed to Moolloy as
-the last command-line argument.
+the last command-line argument. The file is specified in the same
+language as regular Alloy whose grammar can be found at
+\cite{ref:alloy_grammar}, with a few Moolloy specific additions to
+allow the definition of objectives and to run the corresponding
+optimizations. Objective blocks are supported to define a series of
+metrics and whether they should be maximized or minimized. Inst blocks
+are also available to allow the creation of a set of typescopes which
+can be referred to in the run command as the bounds of the
+configuration space. This new bounds block can be referenced wherever a
+typescope is required.
 
-TODO: What is the actual grammar of the input? Is this actual Alloy?
-Is it a Moolloy extension? If it is Alloy, how are metrics specified for
-Moolloy?
+\begin{verbatim}
+  Additions to existing grammar rules
+    paragraph ::= objectiveDecl
+    typescope ::= name
+    cmdDecl ::= [name ":"] ["run"|"check"] [name|block] scope "optimize" name
+
+  Objective Declaration
+    objectiveDecl ::= "objective" name "{" metric ["," metric] "}"
+    metric ::= ["maximize"|"minimize"] name
+
+  Inst Declaration
+    instDecl ::= "inst" name "{" typescope ["," typescope] "}"
+\end{verbatim}
+
+For examples of Moolloy input files see the test cases provided in
+our test plan document.
 
 \subsubsection{Output instance}\label{sec:out_model}
 
