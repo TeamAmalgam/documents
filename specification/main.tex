@@ -54,7 +54,7 @@ The intended audience for this document will be researchers interested
 in the \textit{guided improvement algorithm} for multi-objective
 optimization, or any other relational logic optimization problems.
 
-Because our work is to improve performance and
+Because our work is to improve speed and
 scalability---nonfunctional requirements---this expanded requirements
 specification will also describe the implementation details for the
 guided improvement algorithm. This background will be necessary in
@@ -341,13 +341,42 @@ set.
 \subsection{Performance Requirements}\label{sec:perf_req}
 % Stated in concrete terms
 
+We are concerned with two performance requirements: speed and
+scalability. These two are related, as significant improvements in
+speed will allow Moollloy to scale up and handle larger inputs.
+
+\subsubsection{Speed}\label{sec:perf_speed}
+
+Moolloy's algorithm works by making multiple calls to a SAT solver for
+each multi-objective problem it must solve. These calls can be
+classified as \textsc{sat} and \textsc{unsat} calls, where \textsc{sat}
+calls can be satisfied, and \textsc{unsat} calls cannot be satisfied.
+\textsc{unsat} calls are very expensive, while \textsc{sat} calls are
+less expensive, since they terminate once a solution is found.
+
+Our goal is to improve the speed at which Moolloy solves a problem.
+This allows users to solve our current problems much faster. To
+accomplish this goal, we aim to reduce the number of \textsc{sat} and
+\textsc{unsat} calls.
+
+From Rayside et al.'s paper~\cite{ref:Rayside09}, the twenty-five
+variable, four metric knapsack problem takes approximately forty-five
+hours to complete, in the process requiring 1,938 calls to the SAT
+solver, where 814 were \textsc{unsat}. Our goal is to reduce this time
+to under twenty-four hours.
+
+\subsubsection{Scalability}\label{sec:perf_scale}
+
+Because solving large problems is very expensive, there are many
+real-world problems that simply cannot be solved at this time. We aim
+to optimize Moolloy so that such problems are solvable.
+
 \subsection{Design Constraints}\label{sec:constraints}
 
-\subsection{Software System Attributes}\label{sec:sw_sys_attr}
-% Nonfunctional properties (besides performance) expressed as testable
-% constraints
-
-\subsection{Other Requirements}\label{sec:other_req}
+As Moolloy is currently implemented in Java, the new version must also
+be implemented in Java. Furthermore, to maximize the utility of this
+program, Moolloy must be able to build and run on any platform that
+supports Java.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Current Implementation Details}\label{sec:impl}
