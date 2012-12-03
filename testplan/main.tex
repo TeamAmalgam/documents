@@ -90,11 +90,31 @@ have met our goals.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Benchmarks}
 
-\subsection{N-Rooks}
+\subsection{\textit{n}-Queens}
 
-\subsection{N-Queens}
+The $n$-Queens problem is to determine an arrangement of $n$
+queens on an $n \times n$ chess board, such that no two queens can
+attack each other. To transform this into a multi-objective
+optimization problem, for each metric, each square is assigned a random
+integer from $0$ to $n$. To calculate the metric values for a
+configuration, simply sum all the corresponding values for the squares
+the queens are placed on. Thus, the goal is to maximize (or minimize)
+the metric values.
 
-\subsection{Knapsack}
+\subsection{\textit{n}-Rooks}
+
+The $n$-Rooks problem is identical to the $n$-Queens problem, except
+that we use rooks instead of queens. This makes the problem easier, as
+rooks are more restricted than queens are in their movement.
+
+\subsection{Multi-objective Knapsack}
+
+In the standard single-objective knapsack problem, a set of $n$ items
+is given, where each item has a \textit{value} and a \textit{weight}.
+The goal is to maximize the sum of the values, while ensuring the sum
+of the weights is less than or equal some constant. As a
+multi-objective problem, we add multiple values and weights to each
+item.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Case Studies}
