@@ -54,6 +54,17 @@ The intended audience for this document will be researchers interested
 in the \textit{guided improvement algorithm} for multi-objective
 optimization, or any other relational logic optimization problems.
 
+Because our work is to improve performance and
+scalability---nonfunctional requirements---this expanded requirements
+specification will also describe the implementation details for the
+guided improvement algorithm. This background will be necessary in
+order to understand our work.
+
+Due to the fact that this is a research project and that we do not know
+which optimization techniques will be implemented, this requirements
+specification is subject to change. Specifically, more command-line
+arguments may be added to control optimization parameters.
+
 This document allows us, and any other researchers, to develop
 benchmarks and tests for Moolloy. Furthermore, interested researchers
 may also use this document to write extensions and modify the software.
@@ -203,7 +214,7 @@ the SAT solver are packaged with Moolloy.
 % Need give only a textual list of UC names
 
 As input, Moolloy takes a multi-objective optimization problem modelled
-in Alloy, and returns the Pareto front as an Alloy model.
+in Alloy, and returns the Pareto front as an Alloy instance.
 
 %\subsection{User Characteristics}
 % Document any assumptions you make about the user and any assumptions
@@ -229,23 +240,71 @@ As Moolloy is implemented in Java, the user will need to have the Java
 Runtime installed on his or her environment.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Specific Requirements}
+\section{Specific Requirements}\label{sec:specific_reqs}
 % Requirements and specifications
 % UML and UI diagrams go in here
 
-\subsection{External Interfaces}
+\subsection{External Interfaces}\label{sec:ext_int}
 % Detailed descriptions of all inputs and outputs
 %     Name of input (or output)
 %     Description of purpose
 %     Source of input or destination of output
 %     Valid range, accuracy, and/or tolerance
-%     Units of measure
-%     Timing Relationships to other inputs/outputs
-%     Screen formats/organization
-%     Window formats/organization
 %     Command formats
 
-\subsection{Functional Requirements}
+Moolloy takes in various command-line arguments as input parameters.
+Input problems are specified as Alloy models, while solutions are
+output as Alloy instances.
+
+\subsubsection{Command-line arguments}\label{sec:cl_args}
+
+Moolloy has the following command-line arguments:
+
+\begin{itemize}
+  \item \verb|--SingleSolutionPerParetoPoint, -s|\\
+  These two equivalent options specify that only a single solution is
+  computed for each Pareto point. Defaults to False.
+
+  %\item \verb|--ListOnlyOneSolution|\\
+  %Specifies that only one solution is computed. Defaults to False.
+
+  \item \verb|--LogRunningTimesArg=filename|\\
+  Enables logging of running files. Output will be written to the
+  file \texttt{filename}. Defaults to False.
+
+  \item \verb|--NoAdaptableImprovement|\\
+  This option specifies that no adaptable minimum improvement at each
+  step should be used. Defaults to False.
+
+  \item \verb|--LogPrintHeaders|\\
+  This option outputs the header in the log. Defaults to False.
+\end{itemize}
+
+Additional command-line arguments may be added to the external
+interface to control optimization parameters. For example, flags may
+selectively enable optimization features. Because this is a research
+project and we do not know which techniques will be implemented, we
+cannot concretely specify the arguments at this time.
+
+\subsubsection{Input model}\label{sec:in_model}
+
+The input model, specified as an Alloy file, is passed to Moolloy as
+the last command-line argument.
+
+TODO: What is the actual grammar of the input? Is this actual Alloy?
+Is it a Moolloy extension? If it is Alloy, how are metrics specified for
+Moolloy?
+
+\subsubsection{Output instance}\label{sec:out_model}
+
+Moolloy returns the solution as an Alloy instance. Alloy instances are
+expressed as XML files. In this case, solutions are generated as files
+with the name \texttt{alloy\_solutions\_N.xml} where \texttt{N} is the
+solution number.
+
+TODO: What is the grammar/format of this XML file?
+
+\subsection{Functional Requirements}\label{sec:func_req}
 % Organize by features
 %     Use case descriptions
 %     Sequence diagrams
