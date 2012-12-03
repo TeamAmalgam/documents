@@ -31,14 +31,70 @@ SE390 Test Plan for Team Amalgam
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Introduction}
 
+Moolloy is a tool that solves multi-objective optimization problems. It
+is an implementation of the \textit{guided improvement algorithm},
+described by Rayside, Estler, and Jackson~\cite{ref:Rayside09}. Because
+Moolloy is greatly limited by the time it takes to solve large
+problems, our project is to optimize Moolloy. This document serves as
+the test plan for our work.
+
+The rest of this document will cover our test strategy, in particular,
+what tools we are using and which criteria we are testing on. We also
+describe four case studies.
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Testing Strategy}
 
 \subsection{Correctness}
 
-\subsection{Performance}
+Our correctness tests will comprise of two distinct phases: unit
+testing of the individual components, and integration testing of the
+overall program. Unit testing will be done with the TestNG framework,
+with mocking facilitated by Mockito. Integration testing consists of
+running Moolloy on small problem instances, and comparing the outputs
+to reference solutions.
+
+These problems will be small instances of our benchmarks and case
+studies. This is to ensure that tests can complete quickly, providing
+us with quick feedback during development cycles.
+
+Furthermore, we will utilize continuous integration during development,
+to ensure tests are run after every commit to the code repository. This
+makes it easier to identify which commit introduced buggy code. We plan
+to use Atlassian's Bamboo service for this purpose.
+
+\subsection{Speed}
+
+To test for speed, we will use test cases from larger instances of our
+benchmarks and case studies. However, these tests should be small
+enough such that the current version of Moolloy can still solve them,
+even if it takes forty-eight hours. Nevertheless, we intend on choosing
+benchmarks that can be completed in under twenty-four hours, allowing
+us to run nightly speed tests.
 
 \subsection{Scalability}
+
+These test cases will be very large. They cannot be solved by the
+current Moolloy version in any reasonable amount of time. These tests
+will be composed of full instances of our case study problems, as well
+as very large benchmarks.
+
+As these tests are very expensive, it is impractical to run them on a
+regular basis. These tests will only be run on demand when we are
+satisfied with the results from our speed tests.
+
+Our ultimate goal is to be able to compute solutions for these tests in
+under forty-eight hours. This will validate our work and show that we
+have met our goals.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Benchmarks}
+
+\subsection{N-Rooks}
+
+\subsection{N-Queens}
+
+\subsection{Knapsack}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Case Studies}
