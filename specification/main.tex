@@ -36,8 +36,8 @@ SE390 Requirements Specification for Team Amalgam
 \newpage
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Introduction}
-\subsection{Purpose}
+\section{Introduction}\label{sec:intro}
+\subsection{Purpose}\label{sec:purpose}
 % Purpose of the document
 % Who is intended audience?
 % How is it to be used?
@@ -58,7 +58,7 @@ This document allows us, and any other researchers, to develop
 benchmarks and tests for Moolloy. Furthermore, interested researchers
 may also use this document to write extensions and modify the software.
 
-\subsection{Scope}
+\subsection{Scope}\label{sec:scope}
 % Name of the software product
 % Overview of the product - what it will/ will not do
 % Summary of the application of the software, including benefits
@@ -86,7 +86,7 @@ this scale.
 Our focus is on optimizing Moolloy and how it calls the SAT solver. We
 are not concerned with optimizing the SAT solver itself.
 
-\subsection{Definitions, acronyms, abbreviations}
+\subsection{Definitions, acronyms, abbreviations}\label{sec:def}
 % Usually for domain-level definitions
 % Explain any naming conventions you develop to help you write the
 % document
@@ -134,7 +134,7 @@ its evaluation is true. In other words, it asks if a given Boolean
 formula can be satisfied.
 \end{mydef}
 
-\subsection{References}
+\subsection{References}\label{sec:ref}
 % Sources of information such as
 %   Pre-existing project documentation
 %   Documentation of stakeholder interviews
@@ -143,7 +143,7 @@ formula can be satisfied.
 Our work is an extension of the original Moolloy, which was described
 by Rayside, Estler, and Jackson~\cite{ref:Rayside09}.
 
-\subsection{Overview}
+\subsection{Overview}\label{sec:overview}
 % Brief description of the structure of the rest of the SRS
 % Chosen organization for section 3
 % Any deviations from the standard SRS format
@@ -155,7 +155,7 @@ describe the functional and nonfunctional requirements for the
 computer-based system.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Overall Description}
+\section{Overall Description}\label{sec:overall_desc}
 % Overall description of the system including general factors that
 % affect the product and its requirements
 %   Do not state specific requirements here instead provide a
@@ -254,16 +254,19 @@ Runtime installed on his or her environment.
 %     State machine model
 %     Constraints
 
-\subsection{Performance Requirements}
+\subsection{Performance Requirements}\label{sec:perf_req}
 % Stated in concrete terms
 
-\subsection{Design Constraints}
+\subsection{Design Constraints}\label{sec:constraints}
 
-\subsection{Software System Attributes}
+\subsection{Software System Attributes}\label{sec:sw_sys_attr}
 % Nonfunctional properties (besides performance) expressed as testable
 % constraints
 
-\subsection{Other Requirements}
+\subsection{Other Requirements}\label{sec:other_req}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Current Implementation Details}\label{sec:impl}
 
 % Appendices
 % Index
