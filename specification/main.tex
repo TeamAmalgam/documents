@@ -323,11 +323,11 @@ our test plan document.
 \subsubsection{Output instance}\label{sec:out_model}
 
 Moolloy returns the solution as an Alloy instance. Alloy instances are
-expressed as XML files. In this case, solutions are generated as files
-with the name \texttt{alloy\_solutions\_N.xml} where \texttt{N} is the
-solution number.
-
-TODO: What is the grammar/format of this XML file?
+expressed as XML files~\cite{ref:alloy_xml} with a predefined
+schema~\cite{ref:alloy_xsd}. In this case, solutions are generated as
+files with the name \texttt{alloy\_solutions\_N.xml} where \texttt{N}
+is the solution number. The XML files can be imported into the Alloy
+Analyzer, and visualized as a graph or as a tree.
 
 \subsection{Functional Requirements}\label{sec:func_req}
 % Organize by features
