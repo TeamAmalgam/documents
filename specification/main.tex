@@ -29,10 +29,9 @@
 \maketitle
 
 \begin{abstract}
-This document is the requirements specification for Moolloy version
-0.3, an optimized version of Moolloy. Moolloy version 0.3 must meet the
-same functional requirements as Moolloy 0.2. In addition,
-Moolloy 0.3 will improve the speed and scalability of Moolloy 0.2.
+Our project is to build Moolloy version 0.3. It must meet the same
+functional requirements as Moolloy 0.2. In addition, Moolloy 0.3 will
+improve the speed and scalability of Moolloy 0.2.
 \end{abstract}
 
 \tableofcontents
@@ -193,9 +192,9 @@ computer-based system.
       };
       \node[right=2cm of alloy] (kodkod) {Kodkod};
       \node[below=0.5cm of kodkod] (sat) {SAT Solver};
-      \path (model) edge[double] (alloy);
-      \path (alloy) edge[single] (kodkod);
-      \path (kodkod) edge[single] (sat);
+      \path(model) edge[double] (alloy);
+      \path(alloy) edge[single] (kodkod);
+      \path(kodkod) edge[single] (sat);
     \end{tikzpicture}
   \caption{Overview of Moolloy structure.}
 \end{figure}
@@ -292,10 +291,9 @@ cannot concretely specify the arguments at this time.
 \subsubsection{Input model}\label{sec:in_model}
 
 The input model, specified as an Alloy file, is passed to Moolloy as
-the last command-line argument. The file is specified in the same
-language as regular Alloy whose grammar can be found at
-\cite{ref:alloy_grammar}, with a few Moolloy specific additions to
-allow the definition of objectives and to run the corresponding
+the last command-line argument. The file follows the Alloy
+grammar~\cite{ref:alloy_grammar}, with a few Moolloy specific additions
+to allow the definition of objectives and to run the corresponding
 optimizations. Objective blocks are supported to define a series of
 metrics and whether they should be maximized or minimized. Inst blocks
 are also available to allow the creation of a set of typescopes which
@@ -304,16 +302,18 @@ configuration space. This new bounds block can be referenced wherever a
 typescope is required.
 
 \begin{verbatim}
-  Additions to existing grammar rules
+Additions to existing grammar rules
     paragraph ::= objectiveDecl
     typescope ::= name
-    cmdDecl ::= [name ":"] ["run"|"check"] [name|block] scope "optimize" name
+    cmdDecl ::= [name ":"] ["run"|"check"] [name|block]
+                scope "optimize" name
 
-  Objective Declaration
-    objectiveDecl ::= "objective" name "{" metric ["," metric] "}"
+Objective Declaration
+    objectiveDecl ::= "objective" name
+                      "{" metric ["," metric] "}"
     metric ::= ["maximize"|"minimize"] name
 
-  Inst Declaration
+Inst Declaration
     instDecl ::= "inst" name "{" typescope ["," typescope] "}"
 \end{verbatim}
 
@@ -409,6 +409,6 @@ supports Java.
 % Appendices
 % Index
 
-\printbibliography
+\printbibliography[heading=bibintoc]
 
 \end{document}
