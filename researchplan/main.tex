@@ -33,7 +33,7 @@ civil engineering, and software engineering.
 \newpage
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Problem Definition}
+\section{Problem Definition}\label{sec:problem_def}
 Multi-objective optimization is a widely researched area of computer
 science that focuses on finding solutions to problem definitions with
 respect to given objective realization constraints. Computing such
@@ -83,7 +83,7 @@ Therefore, our work will focus on increasing the performance of
 Moolloy, while ensuring the algorithm continues to perform correctly.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Related Work}
+\section{Related Work}\label{sec:related_work}
 
 The \textit{guided improvement algorithm} was described by Rayside,
 Estler, and Jackson~\cite{ref:Rayside09} in 2009. In their paper, they
@@ -118,14 +118,14 @@ However, the algorithm does not produce intermediate Pareto-optimal
 results.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Research Value}
+\section{Research Value}\label{sec:research_val}
 Multi-objective optimization problems appear in may different fields.
 By improving the performance and scalability of the algorithm, we will
 enable its usage for problems with larger input spaces. We have
 identified potential case studies from three different fields:
 aerospace, civil engineering, and software engineering.
 
-\subsection{Aerospace}
+\subsection{Aerospace}\label{sec:aerospace}
 Every ten years NASA performs its decadal survey to determine the
 satellite launch schedule for the next decade~\cite{ref:nasa11}.
 Multi-objective optimization can be used to determine a schedule that
@@ -134,7 +134,7 @@ minimizing cost. Furthermore, many different constraints must be
 satisfied. For example, one satellite may depend on another, or a
 satellite may need to match a specific timeline.
 
-\subsection{Civil Engineering}
+\subsection{Civil Engineering}\label{sec:civil_eng}
 Dr.\ Bryan Tolson, a civil engineering professor from the University of
 Waterloo, has identified a number of multi-objective optimization
 problems in his research. Currently, the problems are solved using
@@ -144,7 +144,7 @@ Pareto-optimal. One of Dr.\ Tolson's problems is to determine the
 optimal type, quantity, and arrangement of materials to line a landfill
 in order to minimize seepage, while keeping cost minimal.
 
-\subsection{Software Engineering}
+\subsection{Software Engineering}\label{sec:soft_eng}
 We will be collaborating with Rafael Olaechea, a graduate student at
 the University of Waterloo who is interested in the \textit{software
 product lines} problem~\cite{ref:Olaechea12}. This problem involves
@@ -156,7 +156,7 @@ Therefore, the problem is to determine an optimal set of modules for a
 device, while satisfying the functionality constraints.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Goals}
+\section{Goals}\label{sec:goals}
 The goal of this project is to optimize Moolloy by reducing the number
 of SAT solver calls. This will increase the scalability of Moolloy so
 it can successfully compute solutions for large multi-objective
@@ -167,7 +167,7 @@ a regression suite to ensure Moolloy continues to compute correct
 solutions.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Methodologies}
+\section{Methodologies}\label{sec:methodologies}
 Before we begin the optimization work, we will identify a series of
 problems that can be used as test data. These problems will range from
 small benchmarks to test correctness, as well as large, real-world
@@ -195,7 +195,7 @@ his collaborators. As we proceed with the project, we may eliminate
 some of these optimization ideas, or add our own.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Risks \& Technical Feasibility}
+\section{Risks \& Technical Feasibility}\label{sec:risks}
 One risk in this project is that we may not be able to find good test
 cases to evaluate our optimization techniques. Each problem is
 different, and thus there are many possible routes for optimization.
@@ -210,7 +210,7 @@ research value, although very little research impact, as there is very
 little benefit to users.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Costs}
+\section{Costs}\label{sec:costs}
 Based on informal calculations, we estimate that it would cost \$50,000
 to pay the four developers on this project. This estimate is based on
 the average co-op student hourly earnings information~\cite{ref:ceca}
@@ -241,7 +241,7 @@ project.
 \end{table}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Legal, Social, and Ethical Issues}
+\section{Legal, Social, and Ethical Issues}\label{sec:issues}
 As we will be using many external libraries, we will need to consider
 which software licenses they are licensed under. Alloy and Kodkod are
 both licensed under the MIT License, a permissive free software
