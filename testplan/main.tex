@@ -110,11 +110,15 @@ have met our goals.
 The $n$-Queens problem is to determine an arrangement of $n$
 queens on an $n \times n$ chess board, such that no two queens can
 attack each other. To transform this into a multi-objective
-optimization problem, for each metric, each square is assigned a random
-integer from $0$ to $n$. To calculate the metric values for a
+optimization problem with $m$ metrics, each square is assigned $m$
+random integers from $0$ to $n$. To calculate the metric values for a
 configuration, simply sum all the corresponding values for the squares
 the queens are placed on. Thus, the goal is to maximize (or minimize)
 the metric values.
+
+We have created test cases for all combinations of $n = \{3..9\}$ and
+$m = \{2..7\}$. These test cases are included in the associated zip
+archive.
 
 \subsection{\textit{n}-Rooks}\label{sec:nrooks}
 
@@ -122,17 +126,30 @@ The $n$-Rooks problem is identical to the $n$-Queens problem, except
 that we use rooks instead of queens. This makes the problem easier, as
 rooks are more restricted than queens are in their movement.
 
+Similar to $n$-Queens, we have test cases for all combinations of $n =
+\{3..9\}$ and $m = \{2..7\}$. These test cases are also included in the
+associated zip archive.
+
 \subsection{Multi-objective Knapsack}\label{sec:knapsack}
 
 In the standard single-objective knapsack problem, a set of $n$ items
 is given, where each item has a \textit{value} and a \textit{weight}.
 The goal is to maximize the sum of the values, while ensuring the sum
 of the weights is less than or equal some constant. As a
-multi-objective problem, we add multiple values and weights to each
-item.
+multi-objective problem, we add $m$ values to each item.
+
+We have created test cases for all combinations of $n = \{10, 15, 20,
+25\}$ and $m = \{2, 3, 4\}$. These test cases are included in the
+associated zip archive.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Case Studies}\label{sec:case_studies}
+
+Currently, we do not have the data for most of these case studies. We
+will need to work with our collaborators to get the data and express
+them as Alloy models. Since most of these problems are quite large,
+they will mainly be used for scalability tests. Thus, there is no
+urgency to implement them.
 
 \subsection{Teaching Assistant Assignment Problem}\label{sec:ta_problem}
 
