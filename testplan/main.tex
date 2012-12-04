@@ -31,7 +31,7 @@ cases are drawn from benchmarks as well as our case studies.
 \newpage
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Introduction}
+\section{Introduction}\label{sec:intro}
 
 Moolloy is a tool that solves multi-objective optimization problems. It
 is an implementation of the \textit{guided improvement algorithm},
@@ -45,7 +45,7 @@ what tools we are using and which criteria we are testing on. We also
 describe four case studies.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Testing Strategy}
+\section{Testing Strategy}\label{sec:strategy}
 
 The test problems will be written as Alloy models, which is the format
 that Moolloy expects its problems to be in. Reference solutions are
@@ -58,7 +58,7 @@ to Moolloy, where problems are expressed in Clafer and then compiled
 down to Alloy. Clafer is most suitable for the software product lines
 problem, but may be adaptable for some of our other test cases.
 
-\subsection{Correctness}
+\subsection{Correctness}\label{sec:correctness}
 
 Our correctness tests will comprise of two distinct phases: unit
 testing of the individual components, and integration testing of the
@@ -77,7 +77,7 @@ to ensure tests are run after every commit to the code repository. This
 makes it easier to identify which commit introduced buggy code. We plan
 to use Atlassian's Bamboo service for this purpose.
 
-\subsection{Speed}
+\subsection{Speed}\label{sec:speed}
 
 To test for speed, we will use test cases from larger instances of our
 benchmarks and case studies, and time how long it takes to compute
@@ -87,7 +87,7 @@ forty-eight hours. Nevertheless, we intend on choosing benchmarks that
 can be completed in under twenty-four hours, allowing us to run nightly
 speed tests.
 
-\subsection{Scalability}
+\subsection{Scalability}\label{sec:scalability}
 
 These test cases will be very large. They cannot be solved by the
 current Moolloy version in any reasonable amount of time. These tests
@@ -103,9 +103,9 @@ under forty-eight hours. This will validate our work and show that we
 have met our goals.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Benchmarks}
+\section{Benchmarks}\label{sec:benchmarks}
 
-\subsection{\textit{n}-Queens}
+\subsection{\textit{n}-Queens}\label{sec:nqueens}
 
 The $n$-Queens problem is to determine an arrangement of $n$
 queens on an $n \times n$ chess board, such that no two queens can
@@ -116,13 +116,13 @@ configuration, simply sum all the corresponding values for the squares
 the queens are placed on. Thus, the goal is to maximize (or minimize)
 the metric values.
 
-\subsection{\textit{n}-Rooks}
+\subsection{\textit{n}-Rooks}\label{sec:nrooks}
 
 The $n$-Rooks problem is identical to the $n$-Queens problem, except
 that we use rooks instead of queens. This makes the problem easier, as
 rooks are more restricted than queens are in their movement.
 
-\subsection{Multi-objective Knapsack}
+\subsection{Multi-objective Knapsack}\label{sec:knapsack}
 
 In the standard single-objective knapsack problem, a set of $n$ items
 is given, where each item has a \textit{value} and a \textit{weight}.
@@ -132,9 +132,9 @@ multi-objective problem, we add multiple values and weights to each
 item.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Case Studies}
+\section{Case Studies}\label{sec:case_studies}
 
-\subsection{Teaching Assistant Assignment Problem}
+\subsection{Teaching Assistant Assignment Problem}\label{sec:ta_problem}
 
 In the \textit{Teaching Assistant Assignment Problem}, a university
 department must assign its graduate students as Teaching Assistant (TA)
@@ -143,7 +143,7 @@ preference, while graduate students rank the courses in order of
 preference. Thus, the objectives are to maximize professor happiness,
 graduate student happiness, and the total number of matchings.
 
-\subsection{NASA Decadal Survey}
+\subsection{NASA Decadal Survey}\label{sec:decadal_survey}
 
 Every ten years, NASA meets with various scientific communities in
 order to conduct its \textit{Decadal Survey}~\cite{ref:nasa11}. Each
@@ -154,27 +154,27 @@ communities, and respects scheduling constraints. For example, some
 satellites must be launched after others, or some satellites may not be
 ready until a certain date.
 
-\subsection{Civil Engineering Problems}
+\subsection{Civil Engineering Problems}\label{sec:civ_eng}
 
 We will be collaborating with Professor Bryan Tolson, from the
 Department of Civil and Environmental Engineering at the University of
 Waterloo. Professor Tolson has several interesting multi-objective
 optimization problems; in this document, we describe two of them.
 
-\subsubsection{Pipe network problem}
+\subsubsection{Pipe network problem}\label{sec:pipes}
 
 In this problem, the task is to determine a set of pipes to be used for
 building a pipe network. Each pipe has a discrete size, and the
 objectives are to maximize performance and minimize cost.
 
-\subsubsection{Landfill problem}
+\subsubsection{Landfill problem}\label{sec:landfill}
 
 In this problem, the task is to line a landfill with various materials,
 minimizing seepage and cost. There are a variety of materials that can
 be chosen, and each material can be used in different quantities.
 Furthermore, the arrangement of materials will affect performance.
 
-\subsection{Software Product Lines}
+\subsection{Software Product Lines}\label{sec:sw_product_lines}
 
 We will be collaborating with Rafael Olaechea, a graduate student at
 the University of Waterloo, on the \textit{software product lines}
@@ -185,7 +185,7 @@ maximized, while cost should be minimized. Furthermore, different
 modules may conflict or overlap with others.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%\section{Future Tests}
+%\section{Future Tests}\label{sec:future_tests}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \printbibliography[heading=bibintoc]
