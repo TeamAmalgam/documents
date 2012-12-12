@@ -28,12 +28,6 @@
 \begin{document}
 \maketitle
 
-\begin{abstract}
-Our project is to build Moolloy version 0.3. It must meet the same
-functional requirements as Moolloy 0.2. In addition, Moolloy 0.3 will
-improve the speed and scalability of Moolloy 0.2.
-\end{abstract}
-
 \tableofcontents
 \newpage
 
@@ -53,14 +47,18 @@ project, which consists of the courses SE390, SE490, and SE491.
 Furthermore, as the system is built on top of Moolloy, the scope of
 this document includes the requirements specification for Moolloy.
 The intended audience for this document will be researchers interested
-in the \textit{guided improvement algorithm} for multi-objective
-optimization, or any other relational logic optimization problems.
+in the \textit{guided improvement algorithm}~\cite{ref:Rayside09} for
+multi-objective optimization, or any other relational logic
+optimization problems.
 
-Because our work is to improve speed and
-scalability---nonfunctional requirements---this expanded requirements
-specification will also describe the implementation details for the
-guided improvement algorithm. This background will be necessary in
-order to understand our work.
+A software requirements specification describes the behaviour of a
+software system and not its implementation. In other words, it is
+concerned with \textit{what} a system does and not \textit{how} it does
+it. However, our work is to improve the speed and
+scalability---nonfunctional requirements---of an algorithm, a
+step-by-step procedure for accomplishing some computation. To resolve
+this incongruence, Appendix~\ref{app:impl} outlines how the guided
+improvement algorithm works.
 
 Due to the fact that this is a research project and that we do not know
 which optimization techniques will be implemented, this requirements
@@ -165,7 +163,8 @@ The rest of this document describes the environment, interface, and
 functionality of Moolloy. We also discuss assumptions about the user,
 as well as other constraints and external dependencies. Finally, we
 describe the functional and nonfunctional requirements for the
-computer-based system.
+computer-based system. Appendix~\ref{app:impl} briefly describes the
+guided improvement algorithm.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Overall Description}\label{sec:overall_desc}
@@ -174,7 +173,7 @@ computer-based system.
 %   Do not state specific requirements here instead provide a
 %   background for those requirements.
 
-\begin{figure}
+\begin{figure}[htbp]
   \centering
     \tikzset{>=latex}
     \begin{tikzpicture}[
@@ -196,7 +195,7 @@ computer-based system.
       \path(alloy) edge[single] (kodkod);
       \path(kodkod) edge[single] (sat);
     \end{tikzpicture}
-  \caption{Overview of Moolloy structure.}
+  \caption{Overview of Moolloy structure.}\label{fig:overview}
 \end{figure}
 
 %\subsection{Product Perspective}
@@ -207,16 +206,16 @@ computer-based system.
 % This section includes requirements of the user interface, such as
 % testable usability requirements
 
-Moolloy, as an extension of Alloy, is written in Java. It is backed by
-Kodkod, which in turn makes calls to an external SAT solver. Kodkod and
-the SAT solver are packaged with Moolloy.
-
 %\subsection{Product Functions}
 % Overview of system's main features
 % Need give only a textual list of UC names
 
-As input, Moolloy takes a multi-objective optimization problem modelled
-in Alloy, and returns the Pareto front as an Alloy instance.
+Moolloy, as an extension of Alloy, is written in Java. It is backed by
+Kodkod, which in turn makes calls to an external SAT solver. Kodkod and
+the SAT solver are packaged with Moolloy. As input, Moolloy takes a
+multi-objective optimization problem modelled in Alloy, and returns the
+Pareto front as an Alloy instance. Figure~\ref{fig:overview} depicts
+the overall structure of Moolloy.
 
 %\subsection{User Characteristics}
 % Document any assumptions you make about the user and any assumptions
@@ -403,12 +402,34 @@ be implemented in Java. Furthermore, to maximize the utility of this
 program, Moolloy must be able to build and run on any platform that
 supports Java.
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%\section{Current Implementation Details}\label{sec:impl}
-
 % Appendices
+\appendix
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Guided Improvement Algorithm}\label{app:impl}
+
+This appendix outlines, at a high-livel, how the \textit{guided
+improvement algorithm} works. Rayside et al.~\cite{ref:Rayside09}
+provide a more formal and detailed description in their paper.
+
+First, Moolloy finds a solution that satisfies the constraints. Once
+this solution is found, Moolloy finds a new solution that dominates the
+previous one. Moolloy continues this process of finding new solutions
+until no other dominating solution can be found---this last solution is
+on the Pareto-front, by definition.
+
+Moolloy continues this process with new starting solutions (that are
+not dominated by any previously discovered solution) until all
+solutions on the Pareto-front are found.
+
+Thus, Moolloy makes a large number of calls to the underlying SAT
+solver. These are extremely expensive calls, so the goal for optimizing
+Moolloy is to reduce the number of calls to the SAT solver.
+
+
 % Index
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \printbibliography[heading=bibintoc]
 
 \end{document}
