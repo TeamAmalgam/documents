@@ -179,16 +179,32 @@ maintainable.
 Once these tasks have been completed, we can begin exploring different
 optimization strategies, which are listed below:
 
-\begin{itemize}
-  \item Parallel Decomposition
-  \item Sequential Decomposition
-  \item Input Space Reduction
-  \item Duality
-  \item Empirical Profiling
-  \item Improve Search Guidance / Speculative Execution
-  \item Workflow Feedback
-  \item Incremental SAT Solving
-\end{itemize}
+\begin{description}
+  \item[Parallel Decomposition]
+      Determining a way to split the search space into pieces each of
+      which can be searched independently in parallel.
+  \item[Input Space Reduction]
+      Determining a way to prune out configurations from the search
+      space e.g. we know that any optimal configuration must have this
+      property so we don't need to consider configurations without it.
+  \item[Empirical Profiling]
+      Determining empirically which types of SAT solver calls are most
+      expensive and reducing these types of SAT calls. Determining if
+      the bottleneck is indeed the SAT solver and optimizing other
+      components if not.
+  \item[Improve Search Guidance / Speculative Execution]
+      Instead of trying to find a solution that is better, we place
+      constraints on how much better it must be (e.g. twice as good)
+      which may reduce solver time.
+  \item[Workflow Feedback]
+      Often a user will start the program running and then realize
+      from partial results that they made a mistake, can these partial
+      results be saved and used to speed up their next run.
+  \item[Incremental SAT Solving]
+      Currently we start an entirely new SAT solve for each search,
+      can we save some of the knowledge gained from initial solves to
+      speed up later searches?
+\end{description}
 
 These ideas are the result of previous work done by Dr.\ Rayside and
 his collaborators. As we proceed with the project, we may eliminate
