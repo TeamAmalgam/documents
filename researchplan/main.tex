@@ -176,41 +176,43 @@ problems that can be used as test data. These problems will range from
 small benchmarks to test correctness, as well as large, real-world
 problems to test for optimization. We will also begin converting these
 problems into models that Moolloy can take as input. Concurrently, we
-will also be refactoring the Moolloy code base, to make it more
-maintainable.
+will perform preliminary profiling on Moolloy to identify potential
+bottlenecks. Next, we will begin refactoring the Moolloy code base, to
+make it more maintainable.
 
 Once these tasks have been completed, we can begin exploring different
 optimization strategies, which are listed below:
 
 \begin{description}
-  \item[Parallel Decomposition]
+  \item[Parallel Decomposition] \hfill \\
       Determining a way to split the search space into pieces each of
       which can be searched independently in parallel.
-  \item[Input Space Reduction]
-      Determining a way to prune out configurations from the search
-      space e.g. we know that any optimal configuration must have this
-      property so we don't need to consider configurations without it.
-  \item[Empirical Profiling]
+  \item[Input Space Reduction] \hfill \\
+      Determining a way to prune configurations from the search
+      space. For example, if we know that any optimal configuration
+      must have a certain property, we can eliminate configurations
+      without that property.
+  \item[Empirical Profiling] \hfill \\
       Determining empirically which types of SAT solver calls are most
       expensive and reducing these types of SAT calls. Determining if
       the bottleneck is indeed the SAT solver and optimizing other
       components if not.
-  \item[Improve Search Guidance / Speculative Execution]
+  \item[Improve Search Guidance / Speculative Execution] \hfill \\
       Instead of trying to find a solution that is better, we place
-      constraints on how much better it must be (e.g. twice as good)
-      which may reduce solver time.
-  \item[Workflow Feedback]
+      constraints on how much better it must be (for example, twice as
+      good) which may reduce solver time.
+  \item[Workflow Feedback] \hfill \\
       Often a user will start the program running and then realize
-      from partial results that they made a mistake, can these partial
-      results be saved and used to speed up their next run.
-  \item[Incremental SAT Solving]
+      from partial results that he or she made a mistake. Can these
+      partial results be saved and used to speed up the next run?
+  \item[Incremental SAT Solving] \hfill \\
       Currently we start an entirely new SAT solve for each search,
       can we save some of the knowledge gained from initial solves to
       speed up later searches?
-  \item[Genetic Algorithm Seeding]
-      Use a heuristic or genetic algorithm MOOP solving method to get
-      approximate pareto points and then use these approximate points
-      as the starting points for the guided improvement algorithm.
+  \item[Genetic Algorithm Seeding] \hfill \\
+      Use a genetic algorithm solving method to get approximate Pareto
+      points, and then use these approximate points as the starting
+      points for the guided improvement algorithm.
 \end{description}
 
 These ideas are the result of previous work done by Dr.\ Rayside and
@@ -257,9 +259,9 @@ project.
     \multicolumn{1}{c}{\textbf{Cost}} \\
     \hline
       Developer time & \$50,000 \\
-      Atlassian Bamboo (Continuous integration and build system) \cite{ref:bamboo} & \$150 \\
-      Atlassian HipChat (Asynchronous communication platform) \cite{ref:hipchat} & \$150 \\
-      Amazon EC2 Instances (Cloud computing infrastructure) \cite{ref:ec2} & \$50 \\
+      Atlassian Bamboo (continuous integration and build system)~\cite{ref:bamboo} & \$150 \\
+      Atlassian HipChat (asynchronous communication platform)~\cite{ref:hipchat} & \$150 \\
+      Amazon EC2 Instances (cloud computing infrastructure)~\cite{ref:ec2} & \$50 \\
     \hline
     \textbf{Total} & \$50,350 \\
     \hline
