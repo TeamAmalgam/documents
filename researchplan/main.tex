@@ -207,6 +207,10 @@ optimization strategies, which are listed below:
       Currently we start an entirely new SAT solve for each search,
       can we save some of the knowledge gained from initial solves to
       speed up later searches?
+  \item[Genetic Algorithm Seeding]
+      Use a heuristic or genetic algorithm MOOP solving method to get
+      approximate pareto points and then use these approximate points
+      as the starting points for the guided improvement algorithm.
 \end{description}
 
 These ideas are the result of previous work done by Dr.\ Rayside and
