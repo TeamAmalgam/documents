@@ -16,6 +16,9 @@
   dateabbrev=false,
   backend=biber%
 ]{biblatex}
+
+\usepackage{float}
+
 \addbibresource{main.bib}
 
 \begin{document}
@@ -240,7 +243,7 @@ services, as well as hardware infrastructure for our tests.
 Table~\ref{tbl:costbreakdown} shows the total cost breakdown for our
 project.
 
-\begin{table}
+\begin{table}[H]
   \captionsetup{margin=30pt}
   \caption{Total cost breakdown}\label{tbl:costbreakdown}
   \centering
@@ -253,6 +256,9 @@ project.
       Atlassian Bamboo (Continuous integration and build system) \cite{ref:bamboo} & \$150 \\
       Atlassian HipChat (Asynchronous communication platform) \cite{ref:hipchat} & \$150 \\
       Amazon EC2 Instances (Cloud computing infrastructure) \cite{ref:ec2} & \$50 \\
+    \hline
+    \textbf{Total} & \$50,350 \\
+    \hline
   \end{tabular}
 \end{table}
 
