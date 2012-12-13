@@ -408,7 +408,7 @@ supports Java.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Guided Improvement Algorithm}\label{app:impl}
 
-This appendix outlines, at a high-livel, how the \textit{guided
+This appendix outlines, at a high-level, how the \textit{guided
 improvement algorithm} works. Rayside et al.~\cite{ref:Rayside09}
 provide a more formal and detailed description in their paper.
 
@@ -416,11 +416,11 @@ First, Moolloy finds a solution that satisfies the constraints. Once
 this solution is found, Moolloy finds a new solution that dominates the
 previous one. Moolloy continues this process of finding new solutions
 until no other dominating solution can be found---this last solution is
-on the Pareto-front, by definition.
+on the Pareto front, by definition.
 
 Moolloy continues this process with new starting solutions (that are
 not dominated by any previously discovered solution) until all
-solutions on the Pareto-front are found.
+solutions on the Pareto front are found.
 
 Thus, Moolloy makes a large number of calls to the underlying SAT
 solver. These are extremely expensive calls, so the goal for optimizing
