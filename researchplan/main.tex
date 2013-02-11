@@ -213,11 +213,17 @@ optimization strategies, which are listed below:
       Use a genetic algorithm solving method to get approximate Pareto
       points, and then use these approximate points as the starting
       points for the guided improvement algorithm.
+  \item[Overlapping Parallel Searches] \hfill \\
+      Find $N$ different solutions, where $N$ is some function of $M$,
+      the number of metrics. From the $N$ seed points, start parallel
+      searches for the Pareto front. Eliminate any duplicate Pareto
+      points.
 \end{description}
 
 These ideas are the result of previous work done by Dr.\ Rayside and
-his collaborators. As we proceed with the project, we may eliminate
-some of these optimization ideas, or add our own.
+his collaborators~\cite{ref:Kovacevic11}. As we proceed with the
+project, we may eliminate some of these optimization ideas, or add our
+own.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Risks \& Technical Feasibility}\label{sec:risks}
